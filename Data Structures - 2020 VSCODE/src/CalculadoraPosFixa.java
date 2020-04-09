@@ -1,28 +1,27 @@
 import java.util.Scanner;
 
 public class CalculadoraPosFixa {
-  public static String operandos = "+-/*";
+  public static String operadores = "+-/*";
+  public static String tiposDePilha = "VL";
 
   public static void run() throws Exception {
-
     Scanner s = new Scanner(System.in);
-    System.out.print("Escreva a expressão: ");
-    String entrada = s.nextLine();
 
-    if (entrada.isEmpty()) {
-      s.close();
-      throw new Exception("Entrada vazia");
-    }
+    String entrada, tipoPilha;
 
-    System.out.print("Você quer a pilha em vetor ou lista? (V/L) ");
-    String linha = s.nextLine();
+    do {
+      System.out.print("Escreva a expressão: ");
+      entrada = s.nextLine();
+    } while (entrada.isEmpty());
 
-    while (linha.isEmpty()) {
+    do {
       System.out.print("Você quer a pilha em vetor ou lista? (V/L) ");
-      linha = s.nextLine();
-    }
+      tipoPilha = s.nextLine().toUpperCase();
+    } while (tipoPilha.isEmpty() || !tiposDePilha.contains(tipoPilha));
 
-    Boolean eLista = linha.charAt(0) == 'L';
+    s.close();
+
+    Boolean eLista = tipoPilha.charAt(0) == 'L';
 
     String[] tokens = entrada.split(" ");
     Pilha<Double> pilha = eLista ? new PilhaLista<>() : new PilhaVetor<>(tokens.length);
@@ -32,15 +31,20 @@ public class CalculadoraPosFixa {
         double num = Double.parseDouble(token);
         pilha.push(num);
       } catch (NumberFormatException e) {
-        if (!operandos.contains(token)) {
-          s.close();
-          throw new Exception("Operando invalido");
+        if (!operadores.contains(token)) {
+          throw new Exception("Expressão inválida");
         }
 
-        double b = pilha.pop();
-        double a = pilha.pop();
+        double b, a;
 
-        double resultado = 0;
+        try {
+          b = pilha.pop();
+          a = pilha.pop();
+        } catch (Exception error) {
+          throw new Exception("Expressão inválida");
+        }
+
+        double resultado;
 
         switch (token) {
           case "+":
@@ -55,13 +59,20 @@ public class CalculadoraPosFixa {
           case "/":
             resultado = a / b;
             break;
+          default:
+            throw new Exception("Expressão inválida");
         }
 
         pilha.push(resultado);
       }
     }
 
-    s.close();
-    System.out.println("Resultado: " + pilha.pop());
+    double resultado = pilha.pop();
+
+    if (!pilha.vazia()) {
+      throw new Exception("Expressão inválida");
+    }
+
+    System.out.println("Resultado: " + resultado);
   }
 }

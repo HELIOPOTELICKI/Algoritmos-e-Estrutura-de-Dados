@@ -23,6 +23,7 @@ public class PilhaVetor<T> implements Pilha<T> {
     if (this.vazia()) {
       throw new Exception("Pilha Vazia");
     }
+
     T res = this.vetor[n - 1];
     this.vetor[n - 1] = null;
     this.n--;
