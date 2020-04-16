@@ -42,7 +42,6 @@ public class FilaVetor<T> implements Fila<T> {
 		return this.n == 0;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public void libera() {
 		this.vet = (T[]) new Object[this.vet.length];
