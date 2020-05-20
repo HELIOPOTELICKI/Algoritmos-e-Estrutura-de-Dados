@@ -13,22 +13,23 @@ public class MainBuscaAntecessor {
 		int[] vetor = new int[qtde];
 		Random r = new Random();
 		int valor;
-		
-		for (int i=0; i < qtde;i++) {
-			valor = r.nextInt(1_0);
+
+		for (int i = 0; i < qtde; i++) {
+			valor = r.nextInt(1_00);
 			arvore.inserir(valor);
 			vetor[i] = valor;
 		}
 		System.out.println(Arrays.toString(vetor));
 		System.out.println(arvore.toString());
-		
+
 		int buscaAnt = Integer.parseInt(JOptionPane.showInputDialog("Valor a Buscar o antecessor?"));
 		try {
-			System.out.println("Antecessor de " + buscaAnt + " é " + arvore.antecessor(arvore.buscar(buscaAnt)).getInfo());
-		}catch (NullPointerException e) {
-			System.out.println(buscaAnt + " Não possuí antecessor");
+			System.out.println(
+					"Antecessor de " + buscaAnt + " é " + arvore.antecessor(arvore.buscar(buscaAnt)).getInfo());
+		} catch (NullPointerException e) {
+			System.out.println(buscaAnt + " Não possuí antecessor ou não está na árvore");
 		}
-		
+
 	}
 
 }
