@@ -9,15 +9,14 @@ public class Veiculo implements Comparable<Veiculo> {
 
 	public Veiculo(String placa, String modelo, int ano, String proprietario) {
 		super();
-		this.placa = placa;
-		this.modelo = modelo;
-		this.ano = ano;
-		this.proprietario = proprietario;
+		this.setPlaca(placa);
+		this.setModelo(modelo);
+		this.setAno(ano);
+		this.setProprietario(proprietario);
 	}
 
 	public String toString() {
-		return String.format("\nVeículo %s, placa %s, ano %s, de %s", this.modelo, this.placa, this.ano,
-				this.proprietario);
+		return String.format("\nVeículo %s, placa %s, ano %s, de %s", this.modelo, this.placa, this.ano, this.proprietario);
 	}
 
 	public String getPlaca() {
@@ -68,5 +67,4 @@ public class Veiculo implements Comparable<Veiculo> {
 		Veiculo v = (Veiculo) obj;
 		return this.getPlaca().equals(v.getPlaca());
 	}
-
 }

@@ -15,21 +15,15 @@ public class MainVeiculos {
 		Veiculo i = new Veiculo("OVO-0000", "Gol", 2000, "Joshua");
 		Veiculo j = new Veiculo("ABC-1234", "Ferrari", 2015, "Marta");
 
+		Veiculo[] arrayVeiculos = { a, b, c, d, e, f, g, h, i, j };
+
 		ArvoreBST<Veiculo> arvore = new ArvoreBST<>();
-		arvore.inserir(a);
-		arvore.inserir(b);
-		arvore.inserir(c);
-		arvore.inserir(d);
-		arvore.inserir(e);
-		arvore.inserir(f);
-		arvore.inserir(g);
-		arvore.inserir(h);
-		arvore.inserir(i);
-		arvore.inserir(j);
+
+		for (int cont = 0; cont < arrayVeiculos.length; cont++) {
+			arvore.inserir(arrayVeiculos[cont]);
+		}
 
 		System.out.println(arvore);
-		System.out.println("\n\n" + arvore.toStringOrdered());
-
+		System.out.println("\n" + arvore.toStringOrdered());
 	}
-
 }
