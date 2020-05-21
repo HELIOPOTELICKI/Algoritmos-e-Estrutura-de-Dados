@@ -27,7 +27,8 @@ public class MainVeiculos {
 		arvore.inserir(i);
 		arvore.inserir(j);
 
-		System.out.println(arvore.toStringOrdered());
+		System.out.println(arvore);
+		System.out.println("\n\n" + arvore.toStringOrdered());
 
 	}
 
