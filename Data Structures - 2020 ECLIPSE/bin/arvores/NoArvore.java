@@ -75,7 +75,6 @@ public class NoArvore<T> {
 		int aux = 0;
 
 		if (this.filho != null) {
-
 			nivel += this.filho.calculaNivel();
 		}
 
