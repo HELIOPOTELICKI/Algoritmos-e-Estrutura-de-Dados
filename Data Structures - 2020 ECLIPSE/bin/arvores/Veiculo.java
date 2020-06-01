@@ -1,22 +1,30 @@
 package arvores;
 
 public class Veiculo implements Comparable<Veiculo> {
-
 	private String placa;
 	private String modelo;
 	private int ano;
 	private String proprietario;
+	//private static Comparator<Veiculo> comparador;
 
-	public Veiculo(String placa, String modelo, int ano, String proprietario) {
+	public Veiculo(String placa, String modelo, int ano, 
+					String proprietario) {
 		super();
-		this.setPlaca(placa);
-		this.setModelo(modelo);
-		this.setAno(ano);
-		this.setProprietario(proprietario);
+		this.placa = placa;
+		this.modelo = modelo;
+		this.ano = ano;
+		this.proprietario = proprietario;
 	}
 
+	/*
+	public static void setComparador(Comparator<Veiculo> comparador) {
+		Veiculo.comparador = comparador;
+	}
+	*/
+
 	public String toString() {
-		return String.format("\nVeículo %s, placa %s, ano %s, de %s", this.modelo, this.placa, this.ano, this.proprietario);
+		return String.format("\nVeículo %s, placa %s, ano %s, de %s", this.modelo, this.placa, this.ano,
+				this.proprietario);
 	}
 
 	public String getPlaca() {
@@ -52,8 +60,9 @@ public class Veiculo implements Comparable<Veiculo> {
 	}
 
 	@Override
-	public int compareTo(Veiculo veiculo) {
-		return this.getPlaca().compareTo(veiculo.getPlaca());
+	public int compareTo(Veiculo outro) {
+		return this.getPlaca().compareTo(outro.getPlaca());
+		//return comparador.compare(this, outro);
 	}
 
 	@Override
