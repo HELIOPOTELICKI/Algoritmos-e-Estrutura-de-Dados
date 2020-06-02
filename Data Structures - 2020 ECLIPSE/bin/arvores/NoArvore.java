@@ -4,7 +4,6 @@ public class NoArvore<T> {
 	private T info;
 	private NoArvore<T> filho;
 	private NoArvore<T> irmao;
-	private int nivel;
 
 	public NoArvore<T> getFilho() {
 		return filho;

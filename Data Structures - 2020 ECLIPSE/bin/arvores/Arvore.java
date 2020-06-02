@@ -39,7 +39,7 @@ public class Arvore<T> {
 	}
 
 	public int getAltura() {
-		NoArvore raiz = getRaiz();
+		NoArvore<T> raiz = getRaiz();
 
 		if (raiz == null) {
 			return -1;
@@ -48,9 +48,13 @@ public class Arvore<T> {
 		return getAltura(raiz);
 	}
 
-	private int getAltura(NoArvore no) {
+	private int getAltura(NoArvore<T> no) {
+		if (no == null) {
+			return -1;
+		}
+
 		int alturaMax = -1;
-		NoArvore noAtual = no.getFilho();
+		NoArvore<T> noAtual = no.getFilho();
 
 		while (noAtual != null) {
 			int alturaAtual = getAltura(noAtual);
@@ -95,5 +99,21 @@ public class Arvore<T> {
 		}
 
 		return -1;
+	}
+
+	public boolean isBalanceada() {
+		NoArvore<T> raiz = getRaiz();
+
+		if (raiz == null) {
+			return true;
+		}
+
+		return isBalanceada(raiz);
+	}
+
+	private boolean isBalanceada(NoArvore<T> no) {
+		NoArvore<T> irmaoAtual = no.getIrmao();
+
+		return Math.abs(getAltura(irmaoAtual) - getAltura(irmaoAtual.getIrmao())) <= 1;
 	}
 }
