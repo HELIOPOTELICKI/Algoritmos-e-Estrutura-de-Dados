@@ -4,7 +4,6 @@ public class NoArvore<T> {
 	private T info;
 	private NoArvore<T> filho;
 	private NoArvore<T> irmao;
-	private int nivel;
 
 	public NoArvore<T> getFilho() {
 		return filho;
@@ -69,24 +68,4 @@ public class NoArvore<T> {
 
 		return str;
 	}
-
-	public int calculaNivel() {
-		nivel++;
-		int aux = 0;
-
-		if (this.filho != null) {
-			nivel += this.filho.calculaNivel();
-		}
-
-		if (this.irmao != null) {
-			aux = this.irmao.calculaNivel();
-			if (aux >= nivel) {
-				nivel = aux;
-			}
-			this.irmao.calculaNivel();
-		}
-		return this.nivel;
-
-	}
-
 }

@@ -2,9 +2,6 @@ package arvores;
 
 public class MainArvoreNAria {
 	public static void main(String args[]) {
-		
-		NoArvore<Integer> n11 = new NoArvore<Integer>(11);
-		NoArvore<Integer> n12 = new NoArvore<Integer>(12);
 		NoArvore<Integer> n9 = new NoArvore<Integer>(9);
 		NoArvore<Integer> n10 = new NoArvore<Integer>(10);
 		NoArvore<Integer> n4 = new NoArvore<Integer>(4);
@@ -32,16 +29,6 @@ public class MainArvoreNAria {
 		Arvore<Integer> a = new Arvore<>();
 		a.setRaiz(n1);
 
-		Arvore<Integer> b = new Arvore<>();
-		b.setRaiz(n11);
-		
-		Arvore<Integer> c = new Arvore<>();
-		
-		System.out.println(a.toString());
-		System.out.println(b.toString());
-		System.out.println(c.toString() + "\n");
-		System.out.println(String.format("Altura da arvore: %d", a.getAltura()));
-		System.out.println(String.format("Altura da arvore: %d", b.getAltura()));
-		System.out.println(String.format("Altura da arvore: %d", c.getAltura()));
+		System.out.println(String.format("É balanceada: %s", a.isBalanceada()));
 	}
 }
