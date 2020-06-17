@@ -1,5 +1,5 @@
 
-public class Veiculo implements Comparable<Veiculo> {
+public class Veiculo implements Comparable<String> {
 	private String placa;
 	private String modelo;
 	private int ano;
@@ -18,7 +18,7 @@ public class Veiculo implements Comparable<Veiculo> {
 	}
 
 	public String toString() {
-		return String.format("\nVeículo %s, placa %s, ano %s, de %s", this.modelo, this.placa, this.ano,
+		return String.format("Veículo %s, placa %s, ano %s, de %s \n", this.modelo, this.placa, this.ano,
 				this.proprietario);
 	}
 
@@ -54,20 +54,13 @@ public class Veiculo implements Comparable<Veiculo> {
 		this.proprietario = proprietario;
 	}
 
-	@Override
-	public int compareTo(Veiculo outro) {
-		return this.getPlaca().compareTo(outro.getPlaca());
-	}
+    @Override
+    public int compareTo(String outro) {
+       return (this.getPlaca().compareTo(outro));
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Veiculo v = (Veiculo) obj;
-		return this.getPlaca().equals(v.getPlaca());
-	}
+    @Override
+    public boolean equals(Object obj) {
+        return (this.getPlaca().compareTo((String) obj) == 0);
+    }
 }

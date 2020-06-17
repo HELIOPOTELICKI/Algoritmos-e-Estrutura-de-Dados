@@ -24,16 +24,14 @@ public class ListaEncadeada<T> implements Lista<T> {
 		}
 		if (posicao == qtdeElementos || this.estaVazia()) { // última posição
 			this.insere(valor);
-		}
-		else {
+		} else {
 			ItemLista<T> novo = new ItemLista<>();
 			novo.setInfo(valor);
 			if (posicao == 0) { // primeira posição
 				novo.setProx(primeiro);
 				primeiro = novo;
-			}
-			else { // posição intermediária
-				ItemLista<T> anterior = this.descobre(posicao-1);
+			} else { // posição intermediária
+				ItemLista<T> anterior = this.descobre(posicao - 1);
 				novo.setProx(anterior.getProx());
 				anterior.setProx(novo);
 			}
@@ -71,7 +69,7 @@ public class ListaEncadeada<T> implements Lista<T> {
 
 		return ultimoIndice;
 	}
-	
+
 	@Override
 	public T retira(int posicao) {
 		if (posicao < 0 || posicao > qtdeElementos) {
@@ -84,15 +82,13 @@ public class ListaEncadeada<T> implements Lista<T> {
 			if (primeiro == null) {
 				ultimo = null;
 			}
-		}
-		else {
-			ItemLista<T> anterior = this.descobre(posicao-1);
-			if (posicao == qtdeElementos-1) { // última posição
+		} else {
+			ItemLista<T> anterior = this.descobre(posicao - 1);
+			if (posicao == qtdeElementos - 1) { // última posição
 				retorno = ultimo.getInfo();
 				ultimo = anterior;
 				ultimo.setProx(null);
-			}
-			else { // posição intermediária
+			} else { // posição intermediária
 				ItemLista<T> atual = anterior.getProx();
 				retorno = atual.getInfo();
 				anterior.setProx(atual.getProx());
@@ -120,16 +116,16 @@ public class ListaEncadeada<T> implements Lista<T> {
 		String resultado = null;
 		ItemLista<T> atual = primeiro;
 		while (atual != null) {
-			if ( resultado == null) {
+			if (resultado == null) {
 				resultado = atual.getInfo().toString();
 			} else {
-				resultado = atual.getInfo().toString()+ ", " + resultado ;
+				resultado = atual.getInfo().toString() + ", " + resultado;
 			}
 			atual = atual.getProx();
 		}
 		return "[ " + resultado + " ]";
 	}
-	
+
 	@Override
 	public T busca(int posicao) {
 		if (posicao > 0 && posicao < qtdeElementos) {
@@ -137,12 +133,12 @@ public class ListaEncadeada<T> implements Lista<T> {
 		}
 		return null;
 	}
-	
+
 	@Override
 	public boolean estaVazia() {
 		return (primeiro == null);
 	}
-	
+
 	@Override
 	public int getQuantidade() {
 		return this.qtdeElementos;
@@ -155,13 +151,14 @@ public class ListaEncadeada<T> implements Lista<T> {
 		for (int i = 0; i < this.getQuantidade(); i++) {
 			nova.insere(this.busca(i));
 		}
-		// é importante o formato abaixo para garantir a operação independente do tipo de Lista (ComArray ou Encadeada)
+		// é importante o formato abaixo para garantir a operação independente do tipo
+		// de Lista (ComArray ou Encadeada)
 		for (int i = 0; i < outra.getQuantidade(); i++) {
 			nova.insere(outra.busca(i));
 		}
 		return nova;
 	}
-	
+
 	@Override
 	public Lista<T> divide() {
 		if (this.estaVazia()) {
@@ -182,7 +179,7 @@ public class ListaEncadeada<T> implements Lista<T> {
 
 		return nova;
 	}
-	
+
 	@Override
 	public Lista<T> copia() {
 		ListaEncadeada<T> nova = new ListaEncadeada<>();
@@ -194,18 +191,6 @@ public class ListaEncadeada<T> implements Lista<T> {
 		return nova;
 	}
 
-	private void setPrimeiro(ItemLista<T> i) {
-		this.primeiro = i;
-	}
-
-	private void setUltimo(ItemLista<T> i) {
-		this.ultimo = i;
-	}
-
-	private void setQuantidade(int tam) {
-		this.qtdeElementos = tam;
-	}
-	
 	private ItemLista<T> descobre(int posicao) {
 		ItemLista<T> atual = primeiro;
 		int contador = 0;
@@ -219,6 +204,16 @@ public class ListaEncadeada<T> implements Lista<T> {
 		return null;
 	}
 
+	private void setPrimeiro(ItemLista<T> i) {
+		this.primeiro = i;
+	}
 
-	
+	private void setUltimo(ItemLista<T> i) {
+		this.ultimo = i;
+	}
+
+	private void setQuantidade(int tam) {
+		this.qtdeElementos = tam;
+	}
+
 }

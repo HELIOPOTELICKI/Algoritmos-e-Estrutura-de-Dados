@@ -1,7 +1,6 @@
 
 public interface Lista<T> {
 
-	// métodos
 	void insere(T valor);
 
 	void insere(T valor, int posicao);
@@ -23,6 +22,5 @@ public interface Lista<T> {
 	Lista<T> copia();
 
 	boolean estaVazia();
-
 
 }
