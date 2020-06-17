@@ -7,6 +7,7 @@
  *		Luis Augusto Kühn.
  */
 
+@SuppressWarnings("serial")
 public class ListaException extends RuntimeException {
 
 	public ListaException(String message) {
