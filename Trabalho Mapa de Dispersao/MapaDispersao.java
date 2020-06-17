@@ -1,9 +1,18 @@
+/*
+ * Trabalho 3 - Tabelas de Dispersão
+ * 
+ * Grupo: Trab3-10
+ *		Hélio Potelicki; 
+ *		João Vitor Persuhn;
+ *		Luis Augusto Kühn.
+ */
 
 public class MapaDispersao<K, T> {
 	private ListaEncadeada<T>[] tabela;
-	private int quantidadaUso = 0;
+	private int tamanhoAtual = 0;
 	private int quantidade;
 
+	@SuppressWarnings("unchecked")
 	public MapaDispersao(int quantidade) {
 		tabela = new ListaEncadeada[getProximoPrimo(quantidade)];
 	}
@@ -43,10 +52,11 @@ public class MapaDispersao<K, T> {
 		} else {
 			tabela[indice].insere(valor);
 		}
-		quantidadaUso++;
+		tamanhoAtual++;
 		return true;
 	}
 
+	@SuppressWarnings("unchecked")
 	public T remover(K chave) {
 		int indice = calcularHash(chave);
 		if (tabela[indice] == null) {
@@ -59,10 +69,11 @@ public class MapaDispersao<K, T> {
 			return null;
 		}
 		itens.retira(posicaoLista);
-		quantidadaUso--;
+		tamanhoAtual--;
 		return retorno;
 	}
 
+	@SuppressWarnings("unchecked")
 	public T buscar(K chave) {
 		int indice = calcularHash(chave);
 		if (tabela[indice] == null) {
@@ -73,6 +84,6 @@ public class MapaDispersao<K, T> {
 	}
 
 	public int quantosElementos() {
-		return quantidadaUso;
+		return tamanhoAtual;
 	}
 }

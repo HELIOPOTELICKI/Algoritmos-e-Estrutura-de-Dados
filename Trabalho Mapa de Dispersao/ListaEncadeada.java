@@ -1,3 +1,11 @@
+/*
+ * Trabalho 3 - Tabelas de Dispersão
+ * 
+ * Grupo: Trab3-10
+ *		Hélio Potelicki; 
+ *		João Vitor Persuhn;
+ *		Luis Augusto Kühn.
+ */
 
 public class ListaEncadeada<T> implements Lista<T> {
 	private ItemLista<T> primeiro; // = null
